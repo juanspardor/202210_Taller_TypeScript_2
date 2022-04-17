@@ -12,6 +12,8 @@ function cargarDatosEnTabla(lista) {
     console.log("Cargando series a tabla");
     lista.forEach(function (serie) {
         var trElement = document.createElement("tr");
+        trElement.setAttribute("class", "clickable");
+        trElement.onclick = function () { poblarCard(serie.indice - 1); };
         trElement.innerHTML = "<td class = \"table-active font-weight-bold\">".concat(serie.indice, "</td>\n                           <td class = \"table-active\" style=\"color: #14aaf5;\">").concat(serie.name, "</td>\n                           <td class = \"table-active\">").concat(serie.channel, "</td>\n                           <td class = \"table-active\">").concat(serie.seasons, "</td>");
         seriesBody.appendChild(trElement);
     });
@@ -20,4 +22,9 @@ function promedioTemporadasSeries(lista) {
     var total = 0;
     lista.forEach(function (serie) { total = total + serie.seasons; });
     return "Seasons average: " + total / lista.length;
+}
+function poblarCard(pIndice) {
+    console.log("Se intento buscar la serie " + pIndice);
+    var buscada = series[pIndice];
+    console.log("Serie encontrada: " + buscada.name);
 }

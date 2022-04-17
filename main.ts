@@ -21,6 +21,8 @@ function cargarDatosEnTabla(lista: Serie[]):void
     lista.forEach((serie)=>
     {
         let trElement = document.createElement("tr");
+        trElement.setAttribute("class", "clickable");
+        trElement.onclick = function(){poblarCard(serie.indice-1)};
         trElement.innerHTML = `<td class = "table-active font-weight-bold">${serie.indice}</td>
                            <td class = "table-active" style="color: #14aaf5;">${serie.name}</td>
                            <td class = "table-active">${serie.channel}</td>
@@ -34,4 +36,12 @@ function promedioTemporadasSeries(lista: Serie[]):string
     let total:number = 0;
     lista.forEach((serie) => {total = total + serie.seasons});
     return "Seasons average: " +total/lista.length;
+}
+
+
+function poblarCard(pIndice: number): void
+{
+    console.log("Se intento buscar la serie "+pIndice)
+    let buscada: Serie = series[pIndice];
+    console.log("Serie encontrada: "+buscada.name);
 }
