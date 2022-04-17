@@ -9,8 +9,12 @@ let seriesBody: HTMLElement = document.getElementById("programas")!;
 
 //Obtener el texto donde va el promedio de temporadas
 let promedioTemporadas: HTMLElement = document.getElementById("promedio")!;
+
+//Obtener el espacio donde va la info de la serie seleccionada
+let infoSerie: HTMLElement = document.getElementById("tarjetas")!;
+
 //Calcular y poner el numero de temporadas
-promedioTemporadas.innerHTML = `${promedioTemporadasSeries(series)}`
+promedioTemporadas.innerHTML = `${promedioTemporadasSeries(series)}`;
 
 //Carga de las series en la tabla
 cargarDatosEnTabla(series);
@@ -44,4 +48,16 @@ function poblarCard(pIndice: number): void
     console.log("Se intento buscar la serie "+pIndice)
     let buscada: Serie = series[pIndice];
     console.log("Serie encontrada: "+buscada.name);
+    let pagina = buscada.pagina;
+    infoSerie.innerHTML = "";
+    let cardElement = document.createElement("div");
+    infoSerie.innerHTML = `<div class="card" style="width: 19rem;">
+                                <img class="card-img-top" src="${buscada.foto}" alt="Card image cap">
+                                 <div class="card-body">
+                                    <h5 class="card-title">${buscada.name}</h5>
+                                    <p class="card-text">${buscada.synopsis}</p>
+                                    <a href= "${buscada.pagina}" target="_blank">${buscada.pagina}</a>
+                                </div>
+                            </div>`;
+
 }

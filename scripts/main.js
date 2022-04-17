@@ -4,6 +4,8 @@ import { series } from './data.js';
 var seriesBody = document.getElementById("programas");
 //Obtener el texto donde va el promedio de temporadas
 var promedioTemporadas = document.getElementById("promedio");
+//Obtener el espacio donde va la info de la serie seleccionada
+var infoSerie = document.getElementById("tarjetas");
 //Calcular y poner el numero de temporadas
 promedioTemporadas.innerHTML = "".concat(promedioTemporadasSeries(series));
 //Carga de las series en la tabla
@@ -27,4 +29,8 @@ function poblarCard(pIndice) {
     console.log("Se intento buscar la serie " + pIndice);
     var buscada = series[pIndice];
     console.log("Serie encontrada: " + buscada.name);
+    var pagina = buscada.pagina;
+    infoSerie.innerHTML = "";
+    var cardElement = document.createElement("div");
+    infoSerie.innerHTML = "<div class=\"card\" style=\"width: 19rem;\">\n                                <img class=\"card-img-top\" src=\"".concat(buscada.foto, "\" alt=\"Card image cap\">\n                                 <div class=\"card-body\">\n                                    <h5 class=\"card-title\">").concat(buscada.name, "</h5>\n                                    <p class=\"card-text\">").concat(buscada.synopsis, "</p>\n                                    <a href= \"").concat(buscada.pagina, "\" target=\"_blank\">").concat(buscada.pagina, "</a>\n                                </div>\n                            </div>");
 }
