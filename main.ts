@@ -52,7 +52,7 @@ function poblarCard(pIndice: number): void
     infoSerie.innerHTML = "";
     let cardElement = document.createElement("div");
     infoSerie.innerHTML = `<div class="card" style="width: 19rem;">
-                                <img class="card-img-top" src="${buscada.foto}" alt="Poster o visualizacion de la serie">
+                                <img class="card-img-top" src="${buscada.foto}" alt="${buscada.name}">
                                  <div class="card-body">
                                     <h5 class="card-title">${buscada.name}</h5>
                                     <p class="card-text">${buscada.synopsis}</p>
